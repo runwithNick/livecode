@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cd $(dirname $0)
+SOLUTION=`pwd`
+IDE="[[tool.linux.revolution_folder]]"
+ENGINE="[[tool.linux.revolution_engine]]"
+PROJECT=$1
+MODE=$2
+
+if [ "$PROJECT" = "" ]
+then
+  exit
+fi
+
+if [ "$MODE" = "" ]
+then
+  MODE="debug"
+fi
+
+LIBRARY="$SOLUTION/_build/$MODE/$PROJECT.so"
+
+echo "Ensuring project is up to date..."
+if make -s -C $SOLUTION $PROJECT.$MODE; then
+  echo "Project up to date..."
+  echo "Launching..."
+  echo "  Engine = $ENGINE"
+  echo "  IDE = $IDE"
+  echo "  Stack = $SOLUTION/$PROJECT/${PROJECT}test.rev"
+  cd "$IDE" && EXTERNAL_LIBRARY=$LIBRARY "$ENGINE" "$SOLUTION/$PROJECT/${PROJECT}test.rev"
+else
+  echo "Errors while rebuilding"
+fi
