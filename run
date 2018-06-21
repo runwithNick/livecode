@@ -2,8 +2,8 @@
 
 cd $(dirname $0)
 SOLUTION=`pwd`
-IDE="/home/nick/Desktop/workspace/ExternalsEnvironmentV3"
-ENGINE="/home/nick/Desktop/workspace/ExternalsEnvironmentV3/External Creator V3.rev"
+IDE="/home/nick/Desktop/gitRepo/livecode"
+ENGINE="/home/nick/Desktop/gitRepo/livecode/External Creator V3.rev"
 PROJECT=$1
 MODE=$2
 

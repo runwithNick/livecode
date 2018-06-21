@@ -20,9 +20,9 @@ endif
 INCLUDES=$(CUSTOM_INCLUDES) $(TYPE_INCLUDES) $(HEADER_DIR)
 
 ifeq ($(MODE),release)
-	CCFLAGS=$(CUSTOM_CCFLAGS) $(TYPE_CCFLAGS) -O2 -g -Wall
+	CCFLAGS=$(CUSTOM_CCFLAGS) $(TYPE_CCFLAGS) -O2 -g -Wall -fPIC -m64
 else
-	CCFLAGS=$(CUSTOM_CCFLAGS) $(TYPE_CCFLAGS) -g -Wall
+	CCFLAGS=$(CUSTOM_CCFLAGS) $(TYPE_CCFLAGS) -g -Wall -fPIC -m64
 endif
 
 OBJECTS=$(addprefix $(CACHE_DIR)/, $(addsuffix .o, $(basename $(SOURCES)))) $(CUSTOM_OBJECTS)
@@ -30,10 +30,10 @@ OBJECTS=$(addprefix $(CACHE_DIR)/, $(addsuffix .o, $(basename $(SOURCES)))) $(CU
 VPATH=./src $(addprefix ./src/,$(SOURCE_DIRS)) $(CACHE_DIR) $(BUILD_DIR)
 
 $(CACHE_DIR)/%.o: %.cpp
-	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -c -o$(CACHE_DIR)/$*.o ./src/$*.cpp
+	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -o$(CACHE_DIR)/$*.o -c ./src/$*.cpp
 
 $(CACHE_DIR)/%.o: %.c
-	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -c -o$(CACHE_DIR)/$*.o ./src/$*.c
+	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -o$(CACHE_DIR)/$*.o -c ./src/$*.c
 
 .PHONY: $(NAME).pre
 $(NAME).pre:

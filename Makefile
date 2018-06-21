@@ -26,3 +26,17 @@ libexternal.clean:
 	MODE=debug $(MAKE) -C ./libexternal clean
 	MODE=release $(MAKE) -C ./libexternal clean
 
+.PHONY: ctest ctest.debug ctest.release ctest.clean
+ctest: libexternal
+	$(MAKE) -C ./ctest ctest
+
+ctest.debug: libexternal.debug
+	MODE=debug $(MAKE) -C ./ctest ctest
+
+ctest.release: libexternal.release
+	MODE=release $(MAKE) -C ./ctest ctest
+
+ctest.clean:
+	MODE=debug $(MAKE) -C ./ctest clean
+	MODE=release $(MAKE) -C ./ctest clean
+

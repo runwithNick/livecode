@@ -1,0 +1,40 @@
+MODE=debug make -C ./libexternal libexternal
+make[1]: Entering directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+echo "*** BUILDING ARCHIVE: libexternal"
+*** BUILDING ARCHIVE: libexternal
+make -f Makefile libexternal.pre
+make[2]: Entering directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+mkdir -p ../_build/debug
+mkdir -p ../_cache/debug/libexternal 
+mkdir -p ../_build/debug/headers
+make[2]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+make -f Makefile libexternal.headers
+make[2]: Entering directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+mkdir -p ../_build/debug/headers/revolution
+cp src/external.h ../_build/debug/headers/revolution
+make[2]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+make -f Makefile libexternal.product
+make[2]: Entering directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+gcc   -g -Wall -fPIC -m64 -I./src -I../_build/debug/headers -D_LINUX -D_DEBUG -o../_cache/debug/libexternal/external.o -c ./src/external.c
+ar rc ../_build/debug/libexternal.a ../_cache/debug/libexternal/external.o 
+#
+make[2]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+make[1]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/libexternal'
+MODE=debug make -C ./ctest ctest
+make[1]: Entering directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+echo "*** BUILDING LIBRARY: ctest"
+*** BUILDING LIBRARY: ctest
+make -f Makefile ctest.pre
+make[2]: Entering directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+mkdir -p ../_build/debug
+mkdir -p ../_cache/debug/ctest 
+mkdir -p ../_build/debug/headers
+make[2]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+make -f Makefile ctest.product
+make[2]: Entering directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+gcc   -g -Wall -fPIC -m64 -I./src -I../_build/debug/headers -D_LINUX -D_DEBUG -o../_cache/debug/ctest/ctest.o -c ./src/ctest.c
+../configurations/common.linux.makefile:36: recipe for target '../_cache/debug/ctest/ctest.o' failed
+make[2]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+../configurations/library.linux.makefile:29: recipe for target 'ctest' failed
+make[1]: Leaving directory '/home/nick/Desktop/gitRepo/livecode/ctest'
+Makefile:34: recipe for target 'ctest.debug' failed
