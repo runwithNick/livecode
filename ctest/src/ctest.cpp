@@ -10,11 +10,12 @@
 #include <revolution/external.h>
 
 #include <stdio.h>
+#include <stdlib.h>
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 // BEGIN USER DEFINITIONS
-void cTest(){
+void cTest(char *args[], int nargs, char **retstring, Bool *pass, Bool *error){
   char ch;
   char intro[] = "Testing C Code ... Listing ASCII Values 75 to 100";
   printf("%s\n", intro);
