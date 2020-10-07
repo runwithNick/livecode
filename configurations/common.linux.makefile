@@ -33,7 +33,7 @@ $(CACHE_DIR)/%.o: %.cpp
 	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -o$(CACHE_DIR)/$*.o -c ./src/$*.cpp
 
 $(CACHE_DIR)/%.o: %.c
-	gcc $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -o$(CACHE_DIR)/$*.o -c ./src/$*.c
+	gcc -x c $(CCFLAGS) $(addprefix -I,$(INCLUDES)) $(addprefix -D,$(DEFINES)) -o$(CACHE_DIR)/$*.o -c ./src/$*.c
 
 .PHONY: $(NAME).pre
 $(NAME).pre:

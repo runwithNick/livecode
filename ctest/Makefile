@@ -1,7 +1,7 @@
 NAME=ctest
 TYPE=library
 
-SOURCES=ctest.c
+SOURCES=ctest.cpp
 
 # To add your own source files put them into this list.
 # Note that source files are searched for in src/
@@ -25,8 +25,7 @@ CUSTOM_DYNAMIC_LIBS=
 
 # Add any specific compiler options you need here
 #
-CUSTOM_CCFLAGS=
-#-fno-exceptions -fno-rtti
+CUSTOM_CCFLAGS=-fno-exceptions -fno-rtti
 
 # Add any specific link options you need here
 #
